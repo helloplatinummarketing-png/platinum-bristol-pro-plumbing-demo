@@ -126,5 +126,112 @@
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
   }
+}
+
+/* ── Keyframe animations ── */
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 18px rgba(201, 168, 76, 0.45),
+      0 0 36px rgba(201, 168, 76, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 32px rgba(201, 168, 76, 0.75),
+      0 0 64px rgba(201, 168, 76, 0.4);
+  }
+}
+
+@keyframes carouselScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes borderGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 8px rgba(201, 168, 76, 0.2),
+      inset 0 0 8px rgba(201, 168, 76, 0.05);
+  }
+  50% {
+    box-shadow:
+      0 0 22px rgba(201, 168, 76, 0.5),
+      inset 0 0 14px rgba(201, 168, 76, 0.15);
+  }
+}
+
+.animate-gradient-bg {
+  background: linear-gradient(
+    -45deg,
+    #0b1829,
+    #0f2040,
+    #1a0b3d,
+    #13102a,
+    #0b1829
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 14s ease infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.2s ease-in-out infinite;
+}
+
+.animate-border-glow {
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+.animate-carousel {
+  animation: carouselScroll 28s linear infinite;
+}
+
+.animate-carousel:hover {
+  animation-play-state: paused;
+}
+
+.shimmer-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(201, 168, 76, 0.06) 50%,
+    transparent 60%
+  );
+  animation: shimmer 4s ease-in-out infinite;
+  pointer-events: none;
 }
